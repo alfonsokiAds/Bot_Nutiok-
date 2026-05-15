@@ -312,6 +312,17 @@
     </style>
 
     <script src="assets/js/config.example.js"></script>
+    <script src="assets/js/config.private.js"></script>
+    <script>
+      (function () {
+        var k = (window.NUTIOK_CONFIG && String(window.NUTIOK_CONFIG.geminiApiKey || "").trim()) || "";
+        if (!k) {
+          console.warn(
+            "[NUTIOK] geminiApiKey vacío. Edita assets/js/config.private.js (misma carpeta que index.html), guarda y Ctrl+Mayús+R."
+          );
+        }
+      })();
+    </script>
     <script defer src="assets/js/navbar.js"></script>
     <script defer src="assets/js/scroll.js"></script>
     <script defer src="assets/js/contact.js"></script>

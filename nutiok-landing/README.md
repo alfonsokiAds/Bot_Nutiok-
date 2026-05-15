@@ -48,12 +48,15 @@ window.NUTIOK_CONFIG = window.NUTIOK_CONFIG || {};
 Object.assign(window.NUTIOK_CONFIG, {
   geminiApiKey: "TU_API_KEY",
   formspreeEndpoint: "https://formspree.io/f/tu_form_id",
+  chatbotLocale: "en", // "en" | "es" — idioma de las respuestas del asistente
 });
 ```
 
-Los valores por defecto (modelo, URL base) vienen de [`assets/js/config.example.js`](assets/js/config.example.js), cargado en `index.html`.
+Los valores por defecto (modelo, URL base, idioma del chatbot) vienen de [`assets/js/config.example.js`](assets/js/config.example.js), cargado en `index.html`.
 
-**Seguridad:** exponer `geminiApiKey` en el navegador es aceptable solo para prototipos; en producción usa un **proxy backend** (Netlify/Vercel Function, Cloud Function, etc.) y restricciones por dominio en Google Cloud.
+**Si el chatbot falla:** abre las herramientas de desarrollador (F12 → Consola y pestaña Red) y revisa el mensaje que muestra el propio widget. Causas habituales: clave inválida o revocada, modelo no disponible para tu cuenta (prueba `geminiModel: "gemini-2.0-flash"` en `config.private.js`), o **restricciones de la clave** en Google Cloud / AI Studio: para pruebas en local, la clave debe permitir referencias HTTP como `http://127.0.0.1:8080/*` y `http://localhost:8080/*` (o usar “Sin restricciones” solo en desarrollo).
+
+**Seguridad:** exponer `geminiApiKey` en el navegador es aceptable solo para prototipos; en producción usa un **proxy backend** (Netlify/Vercel Function, Cloud Function, etc.) y restricciones por dominio en Google Cloud. No subas claves reales a `config.example.js`; si alguna llegó a versionarse, **revócala** y crea otra en [Google AI Studio](https://aistudio.google.com/app/apikey).
 
 ### Formulario de contacto
 

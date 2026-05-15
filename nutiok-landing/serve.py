@@ -33,6 +33,11 @@ def main() -> None:
         def __init__(self, *a, **kw):
             super().__init__(*a, directory=str(root), **kw)
 
+        def end_headers(self):
+            # Evita que el navegador cachee JS/CSS/HTML y siga sirviendo config.private.js antiguo
+            self.send_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+            super().end_headers()
+
         def log_message(self, format, *log_args):
             # Mensajes más cortos en consola
             sys.stderr.write("%s - %s\n" % (self.address_string(), format % log_args))
