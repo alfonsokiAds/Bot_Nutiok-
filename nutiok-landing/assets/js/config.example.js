@@ -11,7 +11,7 @@
  */
 window.NUTIOK_CONFIG = window.NUTIOK_CONFIG || {};
 Object.assign(window.NUTIOK_CONFIG, {
-  geminiApiKey: "AIzaSyAbyiSBGpePtBJHdUYlkAzdpOnpNVg_W7Y",
+  geminiApiKey: "TU_API_KEY_AQUI",
   geminiModel: "gemini-2.5-flash",
   geminiBaseUrl: "https://generativelanguage.googleapis.com/v1beta/models",
   /** "en" | "es" — idioma de las respuestas del chatbot */
